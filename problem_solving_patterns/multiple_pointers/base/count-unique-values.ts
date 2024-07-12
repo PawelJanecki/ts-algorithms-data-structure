@@ -4,7 +4,7 @@
  */
 
 function countUniqueValues(arr: number[]) {
-  if (arr.length === 0 || arr.length < 2) {
+  if (arr.length < 2) {
     return 0;
   }
   let i = 0;

@@ -18,7 +18,7 @@ function wrongSolution(arr: number[], n: number) {
   return max;
 }
 
-function maxSubarraySum(arr: number[], n: number) {
+function maxSubaraySum(arr: number[], n: number) {
   let maxSum = 0;
   let tempSum = 0;
   if (arr.length < n) return null;
