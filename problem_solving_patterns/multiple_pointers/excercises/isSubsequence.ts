@@ -6,7 +6,7 @@
 
 
 /**
- * Method check either first string is substring of second one.
+ * Method check whether first string is substring of second one.
  * 
  * @param str1 string
  * @param str2 string
@@ -21,7 +21,7 @@ function isSubsequence2(str1: string, str2: string) {
   let j = 0;
   let temp = 0;
 
-  while (j < str2.length - str1.length) {
+  while (j <= str2.length - str1.length + 1) {
     if (str1[i] === str2[j] && i === str1.length - 1) {
       return true;
     } else if (str1[i] === str2[j]) {
@@ -32,8 +32,12 @@ function isSubsequence2(str1: string, str2: string) {
       }
     } else {
       i = 0;
-      j = temp + 1;
-      // j++
+      if (temp > 0) {
+        j = temp + 1;
+        temp = 0;
+      } else {
+        j++;
+      }
     }
   }
 
@@ -59,18 +63,18 @@ function isSubsequence(str1: string, str2: string) {
   return false;
 }
 
-function test() {
-  console.log(`isSubsequence('hello', 'hello world'): `, isSubsequence('hello', 'hello world')); // true
-  console.log(`isSubsequence('sing', 'sting'): `, isSubsequence('sing', 'sting')); // true
-  console.log(`isSubsequence('abc', 'abracadabra'): `, isSubsequence('abc', 'abracadabra')); // true
-  console.log(`isSubsequence('abc', 'acb'): `, isSubsequence('abc', 'acb')); // false (order matters)
-}
+// function test() {
+//   console.log(`isSubsequence('hello', 'hello world'): `, isSubsequence('hello', 'hello world')); // true
+//   console.log(`isSubsequence('sing', 'sting'): `, isSubsequence('sing', 'sting')); // true
+//   console.log(`isSubsequence('abc', 'abracadabra'): `, isSubsequence('abc', 'abracadabra')); // true
+//   console.log(`isSubsequence('abc', 'acb'): `, isSubsequence('abc', 'acb')); // false (order matters)
+// }
 
 function test2() {
   console.log(`isSubsequence2('hello', 'hello world'): `, isSubsequence2('hello', 'hello world')); // true
   console.log(`isSubsequence2('sing', 'sting'): `, isSubsequence2('sing', 'sting')); // true
-  console.log(`isSubsequence2('abc', 'abracadabra'): `, isSubsequence2('abc', 'abracadabra')); // true
+  console.log(`isSubsequence2('abc', 'abracadabcra'): `, isSubsequence2('abc', 'abracadabcra')); // true
   console.log(`isSubsequence2('abc', 'acb'): `, isSubsequence2('abc', 'acb')); // false (order matters)
 }
 
-test();
+test2();
